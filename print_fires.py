@@ -26,7 +26,18 @@ def main():
                         help="Name of file",
                         required=True)
 
+    parser.add_argument("--operation",
+                        type=str,
+                        help="Statistical operation to perform (mean, median, std)",
+                        default="default",
+                        required=False)
+
     args = parser.parse_args()
+
+    # Error handling for invalid operation input (converts to lowercase for flexibility)
+    if args.operation.lower() not in ["default", "mean", "median", "std"]:
+        print(f"Operation '{args.operation}' not recognized. Please use 'mean', 'median', 'std'")
+        sys.exit(1)
 
     # Pulls data for a specific country (only successful for integer-filled columns)
     fires = get_column(
@@ -35,6 +46,14 @@ def main():
         args.country, 
         args.fires_column
     )
+
+    # Performs requested operation
+    if args.operation.lower() == "mean":
+        fires = mean(fires)
+    elif args.operation.lower() == "median":
+        fires = median(fires)
+    elif args.operation.lower() == "std":
+        fires = standard_deviation(fires)
 
     print(fires)
 
