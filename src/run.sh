@@ -1,5 +1,5 @@
 echo "Working example:"
-python ./print_fires.py \
+python ./src/print_fires.py \
     --country "Afghanistan" \
     --country_column 0 \
     --fires_column 1 \
@@ -7,7 +7,7 @@ python ./print_fires.py \
 
 echo ""
 echo "Example with wrong filename:"
-python ./print_fires.py \
+python ./src/print_fires.py \
     --country "Afghanistan" \
     --country_column 0 \
     --fires_column 1 \
@@ -15,7 +15,7 @@ python ./print_fires.py \
 
 echo ""
 echo "Example with invalid return column:"
-python ./print_fires.py \
+python ./src/print_fires.py \
     --country "Afghanistan" \
     --country_column 0 \
     --fires_column 2 \
