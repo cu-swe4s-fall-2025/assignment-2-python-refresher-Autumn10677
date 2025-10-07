@@ -1,10 +1,11 @@
 import sys
 import unittest
 
-sys.path.append('src/') # noqa
+sys.path.append("src/")  # noqa
 
 import my_utils
 import random
+
 
 class TestMyUtils(unittest.TestCase):
 
@@ -34,12 +35,16 @@ class TestMyUtils(unittest.TestCase):
     # Checks a random example for median()
     def test_median_random(self):
         data = random.sample(range(-100, 100), 101)
-        self.assertEqual(my_utils.median(data), sorted(data)[len(data)//2])
+        self.assertEqual(my_utils.median(data), sorted(data)[len(data) // 2])
 
     # Tests some simple examples for standard_deviation()
     def test_standard_deviation(self):
-        self.assertAlmostEqual(my_utils.standard_deviation([1, 2, 3, 4, 5]), 1.4142135623730951)
-        self.assertAlmostEqual(my_utils.standard_deviation([-10, 0, 1, -3]), 4.301162633521313)
+        self.assertAlmostEqual(
+            my_utils.standard_deviation([1, 2, 3, 4, 5]), 1.4142135623730951
+        )
+        self.assertAlmostEqual(
+            my_utils.standard_deviation([-10, 0, 1, -3]), 4.301162633521313
+        )
         self.assertEqual(my_utils.standard_deviation([5]), 0)
 
         with self.assertRaises(ValueError):
@@ -50,7 +55,8 @@ class TestMyUtils(unittest.TestCase):
         data = random.sample(range(-100, 100), 100)
         mean = sum(data) / len(data)
         variance = sum((x - mean) ** 2 for x in data) / len(data)
-        self.assertAlmostEqual(my_utils.standard_deviation(data), variance ** 0.5)
+        self.assertAlmostEqual(my_utils.standard_deviation(data), variance**0.5)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
