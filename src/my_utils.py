@@ -28,8 +28,8 @@ def get_column(file_name, query_column, query_value, result_column=1):
     try:
         f = open(file_name, "r")
 
-        for l in f:
-            entry = l.rstrip().split(",")
+        for line in f:
+            entry = line.rstrip().split(",")
 
             if entry[query_column] == query_value:
                 try:
@@ -38,7 +38,8 @@ def get_column(file_name, query_column, query_value, result_column=1):
                 # Error handling for non-integer values (this includes floats)
                 except ValueError:
                     print(
-                        f"Non-integer value `{entry[result_column]}` found in return column."
+                        f"Non-integer value `{entry[result_column]}` \
+                        found in return column."
                     )
                     f.close()
                     sys.exit(1)
